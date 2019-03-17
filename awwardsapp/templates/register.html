@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+          <div class="right-column text-center">
+              <img src="/media/insta.png" class="instagram-logo" alt="Instagram image" style="width:150px;">
+                <p class="info">Sign up to see photo from your friends</p>
+                <form method="POST">
+                {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">
+                    <img src="/media/instagram.svg" alt="">
+                </legend>
+                <!-- {{ form|crispy }} -->
+        {%for fields in form%}
+            {{fields.label}}
+            {{fields}}
+        {%endfor%}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+            </small>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+{% endblock content %}

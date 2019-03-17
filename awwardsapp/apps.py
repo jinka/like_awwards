@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class AwwardsAppConfig(AppConfig):
-    name = 'awwards_app'
+    name = 'awwardsapp'

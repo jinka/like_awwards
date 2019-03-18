@@ -40,8 +40,6 @@ class Rate(models.Model):
     design = models.CharField(max_length=30)
     usability = models.CharField(max_length=8)
     creativity = models.CharField(max_length=8,blank=True,null=True)
-    user = models.ForeignKey(User,null = True)
-    project = models.ForeignKey(Project,related_name='rate',null=True)
 
 
     def __str__(self):
@@ -61,4 +59,4 @@ class Rate(models.Model):
     @classmethod
     def get_all_rating(cls):
         rating = Rate.objects.all()
-	return rating
+        return rating

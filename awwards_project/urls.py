@@ -14,6 +14,6 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
     path('newproject/', views.new_project, name='newproject'),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
-    # path('', include('awwardsapp.urls')),
+    path('', include('awwardsapp.urls')),
 
 ]

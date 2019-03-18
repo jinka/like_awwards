@@ -71,10 +71,10 @@ def profile(request):
 
 def new_project(request):
     current_user = request.user
-    project = Project.objects.filter(user = current_user)
+    # project = Project.objects.filter(user = current_user)
 
     if request.method == 'POST':
-        uploadform = ProjectForm(request.POST, request.FILES,instance=request.user)
+        uploadform = ProjectForm(request.POST, request.FILES)
         if uploadform.is_valid():
             upload = uploadform.save(commit=False)
             upload.profile = request.user.profile
@@ -89,6 +89,7 @@ class ProfileList(APIView):
         all_profiles = Profile.objects.all()
         serializers = ProfileSerializer(all_profiles, many=True)
         return Response(serializers.data)
+
 class ProjectList(APIView):
     def get(self, request, format=None):
         all_projects = Project.objects.all()

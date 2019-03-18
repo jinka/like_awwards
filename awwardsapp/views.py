@@ -60,3 +60,16 @@ def profile(request):
     }
 
     return render(request, 'profile.html', context)
+
+
+def upload_project(request):
+    if request.method == 'POST':
+        uploadform = ProjectForm(request.POST, request.FILES)
+        if uploadform.is_valid():
+            upload = uploadform.save(commit=False)
+            upload.profile = request.user.profile
+            upload.save()
+            return redirect('home')
+    else:
+        uploadform = ProjectForm()
+    return render(request,'update-project.html',locals())

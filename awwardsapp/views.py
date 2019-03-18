@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
-# from .models import Image
+from .forms import ProjectForm, ProfileUpdateForm
+
+from .models import Project
 # from decouple import config
 from django.core.mail import send_mail
 from django.conf import settings
@@ -62,7 +64,7 @@ def profile(request):
     return render(request, 'profile.html', context)
 
 
-def upload_project(request):
+def new_project(request):
     if request.method == 'POST':
         uploadform = ProjectForm(request.POST, request.FILES)
         if uploadform.is_valid():

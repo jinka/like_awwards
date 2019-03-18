@@ -3,5 +3,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('upload/', views.upload_project, name='upload_project'),
+    path('upload/', views.new_project, name='new_project'),
 ]

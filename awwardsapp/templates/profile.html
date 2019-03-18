@@ -3,11 +3,11 @@
 {% load static %}
 
 {% block content %}
+
 <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
 <div class="media-body">
     <h2 class="account-heading">{{ user.username }}</h2>
     <p class="text-secondary">{{ user.email }}</p>
-    <h1>Is this is Profile section?</h1>
 </div>
 
 <div>

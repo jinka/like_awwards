@@ -3,8 +3,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from . models import Profile, Project, Rate
 
-
-
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
 
@@ -29,10 +27,15 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['image','bio']
+        fields = ['image','contact','bio']
 
 
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = ['image', 'title','url','detail_desciption']
+
+# class RateForm(forms.ModelForm):
+#     class Meta:
+#         model =Rate
+# 	exclude= ['user','project']

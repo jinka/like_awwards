@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'awwardsapp.apps.AwwardsAppConfig',
     'crispy_forms',
+    'bootstrap4',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -82,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'awwards',
         'USER': 'daud',
-    'PASSWORD':'jinkoos',
+        'PASSWORD':'jinkoos',
     }
 }
 
@@ -123,8 +125,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_USR = '/media/'
+# MEDIA_USR = '/media/'
 
 LOGIN_REDIRECT_URL = '/'
 

@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .forms import ProjectForm, ProfileUpdateForm
+from django.views.generic import ListView, DeleteView, CreateView,UpdateView
 
 from .models import Project
 # from decouple import config
@@ -68,21 +70,19 @@ def profile(request):
 
     return render(request, 'profile.html', context)
 
+   
 
-def new_project(request):
-    current_user = request.user
-    # project = Project.objects.filter(user = current_user)
 
-    if request.method == 'POST':
-        uploadform = ProjectForm(request.POST, request.FILES)
-        if uploadform.is_valid():
-            upload = uploadform.save(commit=False)
-            upload.profile = request.user.profile
-            upload.save()
-            return redirect('home')
-    else:
-        uploadform = ProjectForm()
-    return render(request,'update-project.html',locals())
+class new_project(LoginRequiredMixin,CreateView):
+    model = Project
+    fields = ['image','title','url','detail_desciption',]
+    # current_user = request.user
+    
+    def form_valid(self, form):
+        # form.instance.user = Image.objects.get(user=self.request.user)
+        form.instance.user = self.request.user
+        form.instance.name = self.request.user
+        return super().form_valid(form)
 
 class ProfileList(APIView):
     def get(self, request, format=None):

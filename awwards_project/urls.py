@@ -1,6 +1,8 @@
 # my_project/urls.py
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+# from .views import new_project
+# from . import views
 from django.urls import path, include
 from awwardsapp import views
 from awwardsapp import views as user_views
@@ -12,7 +14,7 @@ urlpatterns = [
     path('profile/', user_views.profile, name='profile'),
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
-    path('newproject/', views.new_project, name='newproject'),
+    # path('newproject/', new_project.as_view(), name='newproject'),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('', include('awwardsapp.urls')),
 

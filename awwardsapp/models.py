@@ -24,7 +24,7 @@ class Profile(models.Model):
 
 class Project(models.Model):
     image = models.ImageField(upload_to = 'images/')
-    title = models.CharField(max_length =20)
+    title = models.CharField(max_length =30)
     url = models.CharField(max_length =50)
     detail_desciption=models.TextField(max_length=500)
     created_date = models.DateTimeField(auto_now_add=True, null=True)
@@ -40,26 +40,26 @@ class Project(models.Model):
         self.save()
 
 class Rate(models.Model):
-    design = models.CharField(max_length=30)
-    usability = models.CharField(max_length=8)
-    creativity = models.CharField(max_length=8,blank=True,null=True)
+    pass
+    # design = models.IntegerField()
+    # usability = models.IntegerField()
+    # creativity = models.IntegerField()
 
+    # def __str__(self):
+    #     return self.design
 
-    def __str__(self):
-        return self.design
+    # class Meta:
+    #     ordering = ['-id']
 
-    class Meta:
-        ordering = ['-id']
+    # def save_rate(self):
+    #     self.save()
 
-    def save_rate(self):
-        self.save()
-
-    @classmethod
-    def get_rate(cls, profile):
-        rate = Rate.objects.filter(Profile__pk = profile)
-        return rate
+    # @classmethod
+    # def get_rate(cls, profile):
+    #     rate = Rate.objects.filter(Profile__pk = profile)
+    #     return rate
     
-    @classmethod
-    def get_all_rating(cls):
-        rating = Rate.objects.all()
-        return rating
+    # @classmethod
+    # def get_all_rating(cls):
+    #     rating = Rate.objects.all()
+    #     return rating

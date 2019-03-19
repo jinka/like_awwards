@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 import datetime as dt
-
+from django.utils import timezone
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg',upload_to='profile_pics')
@@ -24,11 +24,11 @@ class Profile(models.Model):
 
 class Project(models.Model):
     image = models.ImageField(upload_to = 'images/')
-    title = models.CharField(max_length =30)
-    url = models.CharField(max_length =50)
-    detail_desciption=models.TextField(max_length=500)
-    created_date = models.DateTimeField(auto_now_add=True, null=True)
-    user = models.ForeignKey(User, related_name='posted_by', on_delete=models.CASCADE)
+    title = models.CharField(max_length =100)
+    url = models.CharField(max_length =80)
+    detail_desciption=models.TextField(max_length=100)
+    created_date = models.DateTimeField(default=timezone.now)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

@@ -17,6 +17,12 @@ from .models import  Profile, Project
 from .serializer import ProfileSerializer, ProjectSerializer
 
 
+def home(request):
+    context = {
+        'posts': Project.objects.all()
+    }
+    return render(request,'awwardsapp/home.html',context)
+
 def email(request):
     pass
     return redirect('redirect to a new page')
@@ -70,9 +76,6 @@ def profile(request):
 
     return render(request, 'profile.html', context)
 
-   
-
-
 class new_project(LoginRequiredMixin,CreateView):
     model = Project
     fields = ['image','title','url','detail_desciption',]
@@ -95,3 +98,4 @@ class ProjectList(APIView):
         all_projects = Project.objects.all()
         serializers = ProjectSerializer(all_projects, many=True)
         return Response(serializers.data)
+

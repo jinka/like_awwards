@@ -1,7 +1,7 @@
 # my_project/urls.py
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-# from .views import new_project
+# from .views import newproject
 # from . import views
 from django.urls import path, include
 from awwardsapp import views

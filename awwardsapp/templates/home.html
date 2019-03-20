@@ -11,9 +11,9 @@
       <div class="article-metadata">
         <img class="img-responsive" src="{{ project.image.url }}">              
         <a class="mr-2" href="#">{{ project.user }}</a>
-        <small class="text-muted">{{ project.created_date }}</small>
+        <small class="text-muted">{{ project.created_date|date:"F d, Y" }}</small>
       </div>
-      <h2><a class="article-title" href="#">{{ project.title }}</a></h2>
+      <h2><a class="article-title" href="{% url 'project-detail' project.id %}">{{ project.title }}</a></h2>
       <p class="article-content">{{ project.url }}</p>
       <p class="article-content">{{ project.detail_desciption }}</p>
     </div>

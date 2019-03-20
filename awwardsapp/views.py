@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .forms import ProjectForm, ProfileUpdateForm
-from django.views.generic import ListView, DeleteView, CreateView,UpdateView
+from django.views.generic import ListView, CreateView, DetailView,UpdateView 
 
 from .models import Project
 # from decouple import config
@@ -23,6 +24,38 @@ def home(request):
         'projects': projects
     }
     return render(request, 'home.html', context)
+
+class ProjectListView(DetailView):
+    model = Project
+    template_name = 'home.html'
+    context_object_name = "projects"
+    ordering = ['-created_date']
+
+class ProjectDetailView(DetailView):
+    model = Project
+
+class ProjectCreateView(LoginRequiredMixin,CreateView):
+    model = Project
+    fields = ['image','title','url','detail_desciption']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+class ProjectUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
+    model = Project
+    fields = ['image','title','url','detail_desciption']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        project = self.get_object()
+        if self.request.user == project.user:
+            return True
+        return False
+
 
 def email(request):
     pass

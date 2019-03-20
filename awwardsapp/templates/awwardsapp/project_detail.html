@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{{ block.super }}
+{% block content %}
+<div class="container-fluid home-content">
+
+
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+                <img class="img-responsive" src="{{ project.image.url }}">
+                <a class="mr-2" href="#">{{ object.user }}</a>
+                <small class="text-muted">{{ object.created_date|date:"F d, Y" }}</small>
+            </div>
+            <h2>{{ project.title }}</h2>
+            <p class="article-content">{{ object.url }}</p>
+            <p class="article-content">{{ object.detail_desciption }}</p>
+        </div>
+    </article>
+
+</div>
+{% endblock content %}

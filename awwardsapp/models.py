@@ -4,6 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 import datetime as dt
 from django.utils import timezone
+from django.urls import reverse
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -33,7 +34,10 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
-        
+
+    def get_absolute_url(self):
+        return reverse('project-detail', kwargs={'pk': self.pk})
+
     class Meta:
         ordering = ['-pk']
  

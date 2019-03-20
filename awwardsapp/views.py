@@ -18,10 +18,11 @@ from .serializer import ProfileSerializer, ProjectSerializer
 
 
 def home(request):
+    projects = Project.objects.all()
     context = {
-        'posts': Project.objects.all()
+        'projects': projects
     }
-    return render(request,'awwardsapp/home.html',context)
+    return render(request, 'home.html', context)
 
 def email(request):
     pass

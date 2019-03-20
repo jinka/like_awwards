@@ -1,91 +1,49 @@
 {% load static %}
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link 
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <link rel="stylesheet" type="text/css" href="{% static 'insta/main.css' %}">
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    {% if title %}
-    <title>Project- {{ title }}</title>
-    {% else %}
-    <title>Projects</title>
-    {% endif %}
-
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
 </head>
 
 <body>
-    <header class="site-header">
-        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top"
-            style="height:90px; background-color: cadetblue; color: #000;">
-            <div class="container">
-                <a class="navbar-brand mr-4" href="{% url 'home' %}">Projects</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
-                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarToggle">
-                    <div class="navbar-nav mr-auto">
-                        <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
-                        <a class="nav-item nav-link" href="/admin">Dashboard</a>
-                    </div>
-                    <!-- form search `-->
-                    <!-- <div class="search-container">
-                        <form action="/action_page.php">
-                          <input type="text" placeholder="Search.." name="search">
-                          <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                      </div>  -->
-                      <!-- form serach -->
+        <ul class="topnav">
+                <li><a class="active" href="#home">Home</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="right"><a href="#about">About</a></li>
+              </ul>
+              
+              <div style="padding:0 16px;">
+                <h2>Responsive Topnav Example</h2>
+                <p>This example use media queries to stack the topnav vertically when the screen size is 600px or less.</p>
+                <p>You will learn more about media queries and responsive web design later in our CSS Tutorial.</p>
+                <h4>Resize the browser window to see the effect.</h4>
+              </div>
+    load {% block content %}
 
-                    <div class="navbar-nav" style="height:50px">
-                        {% if user.is_authenticated %}
-                        <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-                        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
-                        <a class="nav-item nav-link" href="#">New Project</a>
-                        {% else %}
-                        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-                        <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <main role="main" class="container">
-        <div class="row">
-            <!-- <div class="col-md-8"> -->
-            {% if messages %}
-            {% for message in messages %}
-            <div class="alert alert-{{ message.tags}}">
-                {{ message }}
-            </div>
-            {% endfor%}
-            {% endif%}
-            {% block content %}{% endblock %}
-        </div>
+    {% endblock content %}
 
-        <!-- </div> -->
-    </main>
+    <script 
+ src="https://code.jquery.com/jquery-2.2.2.min.js"
+ integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" 
+ crossorigin="anonymous"
+></script>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <script src="{% static 'main.js' %}"></script>
+<script 
+ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+ integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+ crossorigin="anonymous"
+></script>
+ 
 </body>
 
 </html>

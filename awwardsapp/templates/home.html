@@ -1,8 +1,24 @@
-<!-- templates/home.html -->
-{% extends 'base.html' %}
-{% block title %}Home{% endblock %}
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{{ block.super }}
 {% block content %}
+<div class="container-fluid home-content">
 
-{% for post in posts %}
+
+  {% for project in projects %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <img class="img-responsive" src="{{ project.image.url }}">              
+        <a class="mr-2" href="#">{{ project.user }}</a>
+        <small class="text-muted">{{ project.created_date }}</small>
+      </div>
+      <h2><a class="article-title" href="#">{{ project.title }}</a></h2>
+      <p class="article-content">{{ project.url }}</p>
+      <p class="article-content">{{ project.detail_desciption }}</p>
+    </div>
+  </article>
 {% endfor %}
-{% endblock %}
+
+</div> 
+{% endblock content %}

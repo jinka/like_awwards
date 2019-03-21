@@ -1,1 +1,1 @@
-web: gunicorn awwardsapp.wsgi --log-file
+web: gunicorn WEEK3-IP.wsgi --log-file

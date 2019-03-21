@@ -1,1 +1,1 @@
-web: gunicon awwards_project.wsgi
+web: gunicorn awwards_project.wsgi

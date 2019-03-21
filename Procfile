@@ -1,1 +1,1 @@
-web: gunicorn awwards_project.wsgi
+web: gunicorn bootcamp.wsgi --log-file -

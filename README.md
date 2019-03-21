@@ -11,7 +11,7 @@ Users can register a new account, log in it, upload new projects and rate/review
 **********************************
 1. Internet connection.
 2. Python 3, Django installation.
-3. Clone it using ***git clone https://github.com/jinka/Inst-Photo-App.git***
+3. Clone it using ***git clone https://github.com/jinka/like_awwards.git***
 4. Install Requirements using ***pip install -r requirements.txt***
 5. To start python3.6 manage.py runserver
 6. Go to you browser and writr localhost:8000 or 127.0.0.1:8000
@@ -19,11 +19,11 @@ Users can register a new account, log in it, upload new projects and rate/review
 # Specifications
 |Given|When|Then|
 |-----|----|----|
-|Run Page|Loading Page|View registration form|
-|Registration Load|Fill registration form|Send confirmation email|
-|Login the app|Enter user name and password|Home page load|
-|Click Profile|Edit user own profile|User profile updated|
-|Comment|User comments other posts|Other users post updated|
+|Run Page|Loading Page|Display Posted Projects|
+|Post Project|User click create new project|Login page|
+|User put authentication |New project post form display|User create new project|
+|Vote project|Project vote display|User can vote|
+|Search option|User put project name|Project detail displayed if found|
 
 
 # Author information

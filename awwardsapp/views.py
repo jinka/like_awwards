@@ -133,3 +133,5 @@ class ProjectList(APIView):
         serializers = ProjectSerializer(all_projects, many=True)
         return Response(serializers.data)
 
+def vote(request,project_id):
+    pass

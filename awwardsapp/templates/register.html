@@ -17,7 +17,9 @@
                 <!-- {{ form|crispy }} -->
         {%for fields in form%}
             {{fields.label}}
+            <br>
             {{fields}}
+            <br>
         {%endfor%}
             </fieldset>
             <div class="form-group">

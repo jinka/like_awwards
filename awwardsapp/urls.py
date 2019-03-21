@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from .views import ProjectDetailView, ProjectListView, ProjectCreateView, ProjectUpdateView
 from . import views
@@ -10,3 +12,5 @@ urlpatterns = [
     path('api/profiles/', views.ProfileList.as_view()),
     path('api/projects/', views.ProjectList.as_view()),
 ]
+if settings.DEBUG:
+    urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -1,11 +1,11 @@
 # Project Title
 *****************
-## Awwards
+## Project Rating App
 This is a web application to share projects. This project is built with Python 3, Django and PSQL Datatbase.
 
 # Project Description
 *******************
-Users can register a new account, log in it, upload new projects and rate/review existing projects.
+Users can register a new account, log in it, upload new projects and rate/review existing projects. User should view all projects and user profiles including my profile.
 
 # Setup/Installation Requirements
 **********************************

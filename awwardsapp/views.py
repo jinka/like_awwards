@@ -86,7 +86,7 @@ def register(request):
 def profile(request):
 
     current_user = request.user
-    # images = Image.objects.filter(user = current_user)
+    projects = Project.objects.filter(user = current_user)
 
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
@@ -105,7 +105,7 @@ def profile(request):
     context = {
         'u_form': u_form,
         'p_form': p_form,
-        # 'images': images
+         'projects': projects
     }
 
     return render(request, 'profile.html', context)

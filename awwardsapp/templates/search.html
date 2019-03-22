@@ -1,0 +1,33 @@
+{%extends 'base.html'%} 
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    {% if projects %}
+      <h2>Found {{ projects|length }} of searched term {{message}}</h2>
+    {% else %}
+      <h2> Found 0 projects for the search term {{message}}</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+
+  {% if projects %}
+  {% for project in projects %}
+        
+  <div class="w3-col l3  w3-card-4 w3-round w3-margin " style="min-height:300px; font-family: 'Enriqueta', serif; ">
+    <img class="w3-image w3-hover-opacity" src="{{project.image.url}}" alt="Card image">
+    <div class="w3-container w3-transparent">
+      <h4 class="w3-center">{{project.title}}</h4>
+      <p class="w3-center"><a href="{{project.url}}">{{project.url}}</a></p>
+      <div class="w3-center" ><a href="#" class="w3-button w3-margin-bottom w3-blue">RATE</a></div>
+     
+    </div>
+  </div>
+
+{% endfor %}
+  {% endif %}
+  </div>
+</div>
+{% endblock %}

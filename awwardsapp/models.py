@@ -46,6 +46,11 @@ class Project(models.Model):
     def save_project(self):
         self.save()
 
+    @classmethod
+    def search_by_projectname(cls,idea):
+        projects = cls.objects.filter(title__icontains=idea)
+        return projects
+        
 class Rate(models.Model):
     pass
     # design = models.IntegerField()

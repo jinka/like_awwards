@@ -18,6 +18,21 @@ from .models import  Profile, Project
 from .serializer import ProfileSerializer, ProjectSerializer
 
 
+
+def search_project(request):
+
+    if 'search-project' in request.GET and request.GET["search-project"]:
+        find = request.GET.get("search-project")
+        searched_projects = Project.search_by_projectname(find)
+        message = f"{find}"
+
+        return render(request,'search.html',{'message':message,'projects':searched_projects})
+
+    else:
+        message ="You have not searched for any project"
+        return render(request,'search.html',{'message':message,})
+
+
 def home(request):
     projects = Project.objects.all()
     context = {
@@ -133,5 +148,8 @@ class ProjectList(APIView):
         serializers = ProjectSerializer(all_projects, many=True)
         return Response(serializers.data)
 
+
 def vote(request,project_id):
     pass
+
+
